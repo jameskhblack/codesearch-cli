@@ -8,10 +8,10 @@ from dynaconf import Dynaconf
 
 VERSION = "1.5.0"
 CONFIG_FILENAME = "config.toml"
-CONFIG_PATH = join(expanduser("~"), ".config", "dir-assistant")
-STORAGE_PATH = join(expanduser("~"), ".local", "share", "dir-assistant")
+CONFIG_PATH = join(expanduser("~"), ".config", "codesearch-cli")
+STORAGE_PATH = join(expanduser("~"), ".local", "share", "codesearch-cli")
 INDEX_CACHE_FILENAME = "index_cache.sqlite"
-INDEX_CACHE_PATH = join(expanduser("~"), ".cache", "dir-assistant")
+INDEX_CACHE_PATH = join(expanduser("~"), ".cache", "codesearch-cli")
 HISTORY_FILENAME = "history.pth"  # pth = prompt toolkit history
 CONFIG_DEFAULTS = {
     "CACHE_BASE_DIR": None,
@@ -37,7 +37,7 @@ CONFIG_DEFAULTS = {
     "HIDE_THINKING": True,
     "THINKING_START_PATTERN": "<think>",
     "THINKING_END_PATTERN": "</think>",
-    "MODELS_PATH": join(expanduser("~"), ".local", "share", "dir-assistant", "models"),
+    "MODELS_PATH": join(expanduser("~"), ".local", "share", "codesearch-cli", "models"),
     "EMBED_MODEL": "",
     "LLM_MODEL": "",
     "LLAMA_CPP_OPTIONS": {
