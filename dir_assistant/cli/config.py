@@ -25,6 +25,60 @@ CONFIG_DEFAULTS = {
         ".idea/",
         "__pycache__",
     ],
+    "ALLOWED_EXTENSIONS": [  # Only index files with these extensions
+        # Programming Languages
+        ".py", ".pyw", ".java", ".c", ".cpp", ".h", ".hpp", ".cs", ".go", ".rs", ".swift",
+        ".kt", ".kts", ".scala", ".pl", ".pm", ".rb", ".lua", ".dart", ".groovy", ".pas",
+        ".f", ".f90", ".f95", ".for", ".ada", ".adb", ".ads", ".cob", ".cbl", ".lisp",
+        ".cl", ".scm", ".ss", ".rkt", ".hs", ".lhs", ".erl", ".hrl", ".ex", ".exs",
+        ".elm", ".ml", ".mli", ".fs", ".fsx", ".fsi", ".d", ".nim", ".v", ".sv", ".vhdl",
+        ".vhd", ".php", ".phtml", ".inc", ".asp", ".aspx", ".jsp", ".jspx", ".tcl",
+        ".gd", ".gdscript", ".do", ".ado",
+
+        # Web Development
+        ".html", ".htm", ".xhtml", ".css", ".scss", ".sass", ".less", ".js", ".jsx",
+        ".ts", ".tsx", ".vue", ".svelte", ".json", ".xml", ".xsd", ".xsl", ".xslt",
+        ".yaml", ".yml", ".toml", ".ini", ".cfg", ".conf", ".properties", ".env",
+        ".graphql", ".gql",
+
+        # Scripting & Shell
+        ".sh", ".bash", ".zsh", ".csh", ".ksh", ".fish", ".ps1", ".psm1", ".psd1",
+        ".bat", ".cmd", ".vbs", ".applescript",
+
+        # Markup & Documentation
+        ".md", ".markdown", ".rst", ".tex", ".cls", ".sty", ".txt",
+        ".text", ".rtf", ".org", ".adoc", ".asciidoc", ".wiki", ".mediawiki",
+        ".pod", ".man", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8",
+
+        # Data Formats
+        # None
+
+        # Build & Configuration
+        ".gradle", ".gradle.kts", ".pom", ".xml", # Maven/Gradle
+        ".csproj", ".vbproj", ".fsproj", ".sln", # .NET
+        "Makefile", "makefile", ".mk", # Make
+        "CMakeLists.txt", ".cmake", # CMake
+        "Dockerfile", ".dockerignore", "docker-compose.yml", # Docker
+        ".gitignore", ".gitattributes", ".gitmodules", # Git
+        ".editorconfig", ".npmrc", ".yarnrc", ".babelrc", ".eslintrc", ".prettierrc", # Node/JS ecosystem
+        "pyproject.toml", "setup.cfg", "requirements.txt", # Python
+
+        # Templating
+        ".jinja", ".jinja2", ".j2", ".erb", ".haml", ".slim", ".liquid", ".mustache",
+        ".hbs", ".pug", ".jade", ".tmpl", ".tpl",
+
+        # Other/Domain Specific
+        ".ipynb", # Jupyter Notebooks
+        ".feature", ".spec", ".test", ".story", ".stories", # BDD/Testing
+        ".tf", ".tfvars", ".hcl", # Terraform
+        ".bicep", ".arm", # Azure
+        ".gdshader", ".gdshaderinc", ".gdres", ".gdnlib", ".gdns", ".tscn", ".tres", # Godot Engine
+        ".proto", # Protocol Buffers
+        ".thrift", # Apache Thrift
+        ".qml", # Qt QML
+        ".xaml", # XAML
+        ".glsl", ".frag", ".vert", ".geom", ".comp", # Shaders
+    ],
     "CONTEXT_FILE_RATIO": 0.9,
     "ACTIVE_MODEL_IS_LOCAL": False,
     "ACTIVE_EMBED_IS_LOCAL": False,

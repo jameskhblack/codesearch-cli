@@ -16,16 +16,31 @@ def is_text_file(filepath):
 
 
 def get_text_files(directory=".", ignore_paths=[]):
+    config_dict = load_config()
+    allowed_extensions = config_dict.get("DIR_ASSISTANT", {}).get("ALLOWED_EXTENSIONS", [])
     text_files = []
     for root, dirs, files in os.walk(directory):
-        dirs[:] = [d for d in dirs if os.path.join(root, d) not in ignore_paths]
+        # Filter directories based on ignore_paths
+        dirs[:] = [
+            d
+            for d in dirs
+            if not any(
+                ignore_path in os.path.join(root, d) for ignore_path in ignore_paths
+            )
+        ]
         for i, filename in enumerate(files, start=1):
             filepath = os.path.join(root, filename)
-            if (
-                os.path.isfile(filepath)
-                and not any(ignore_path in filepath for ignore_path in ignore_paths)
-                and is_text_file(filepath)
-            ):
+            # Check if the file should be ignored
+            if any(ignore_path in filepath for ignore_path in ignore_paths):
+                continue
+
+            # Check if the file extension is allowed
+            _, ext = os.path.splitext(filename)
+            if allowed_extensions and ext.lower() not in allowed_extensions:
+                continue
+
+            # Check if the file is a text file
+            if os.path.isfile(filepath) and is_text_file(filepath):
                 text_files.append(filepath)
     return text_files
 
