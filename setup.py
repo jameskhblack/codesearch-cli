@@ -39,7 +39,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "dir-assistant=dir_assistant.main:main",
+            "codesearch-cli=dir_assistant.main:main",
         ],
     },
     classifiers=[
