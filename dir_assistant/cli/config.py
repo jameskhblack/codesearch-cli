@@ -14,6 +14,7 @@ INDEX_CACHE_FILENAME = "index_cache.sqlite"
 INDEX_CACHE_PATH = join(expanduser("~"), ".cache", "dir-assistant")
 HISTORY_FILENAME = "history.pth"  # pth = prompt toolkit history
 CONFIG_DEFAULTS = {
+    "CACHE_BASE_DIR": None,
     "SYSTEM_INSTRUCTIONS": "You are a helpful AI assistant.",
     "GLOBAL_IGNORES": [
         "node_modules/",

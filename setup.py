@@ -9,12 +9,12 @@ HERE = Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 setup(
-    name="dir-assistant",
+    name="codesearch-cli",
     version="1.5.0",
     description="Chat with your current directory's files using a local or API LLM.",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/curvedinf/dir-assistant",
+    url="https://github.com/jameskhblack/codesearch-cli",
     author="Chase Adams",
     author_email="chase.adams@gmail.com",
     license="MIT",

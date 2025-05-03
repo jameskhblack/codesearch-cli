@@ -6,7 +6,7 @@ from faiss import IndexFlatL2
 from sqlitedict import SqliteDict
 
 from dir_assistant.cli.config import HISTORY_FILENAME, STORAGE_PATH, get_file_path, INDEX_CACHE_FILENAME, \
-    INDEX_CACHE_PATH
+    INDEX_CACHE_PATH, load_config
 
 TEXT_CHARS = bytearray({7, 8, 9, 10, 12, 13, 27} | set(range(0x20, 0x100)) - {0x7F})
 
@@ -62,7 +62,10 @@ def get_files_with_contents(directory, ignore_paths, cache_db, verbose):
 def create_file_index(
     embed, ignore_paths, embed_chunk_size, extra_dirs=[], verbose=False
 ):
-    cache_db = get_file_path(INDEX_CACHE_PATH, INDEX_CACHE_FILENAME)
+    config_dict = load_config() # Load the configuration
+    configured_cache_base = config_dict.get("CACHE_BASE_DIR")
+    base_path_for_cache = configured_cache_base if configured_cache_base else INDEX_CACHE_PATH # Use override or default constant
+    cache_db = str(get_file_path(base_path_for_cache, INDEX_CACHE_FILENAME))
 
     # Start with current directory
     files_with_contents = get_files_with_contents(".", ignore_paths, cache_db, verbose)
@@ -221,9 +224,13 @@ def search_index(embed, index, query, all_chunks):
 
 
 def clear(args, config_dict):
+    # Determine the correct base path for the cache
+    configured_cache_base = config_dict.get("CACHE_BASE_DIR")
+    base_path_for_cache = configured_cache_base if configured_cache_base else INDEX_CACHE_PATH
+
     files = [
-        get_file_path(INDEX_CACHE_PATH, INDEX_CACHE_FILENAME),
-        get_file_path(STORAGE_PATH, HISTORY_FILENAME),
+        get_file_path(base_path_for_cache, INDEX_CACHE_FILENAME),
+        get_file_path(STORAGE_PATH, HISTORY_FILENAME)
     ]
     for file in files:
         if os.path.exists(file):
